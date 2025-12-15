@@ -1433,6 +1433,16 @@ func flattenIndexFieldStatuses(apiObjects []types.IndexFieldStatus) ([]any, erro
 			return nil, err
 		}
 
+		// Skip fields that are pending deletion or have incomplete data.
+		// flattenIndexFieldStatus returns nil when:
+		// 1. Options or Status are nil (API error or transitional state)
+		// 2. PendingDeletion is true (field is being deleted)
+		// Adding nil to a TypeSet causes a panic "set item just set doesn't exist",
+		// so we must skip these entries.
+		if tfMap == nil {
+			continue
+		}
+
 		tfList = append(tfList, tfMap)
 	}
 
