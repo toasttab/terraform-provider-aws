@@ -8,6 +8,8 @@ var (
 	ResourceDomain                    = resourceDomain
 	ResourceDomainServiceAccessPolicy = resourceDomainServiceAccessPolicy
 
-	FindAccessPolicyByName = findAccessPolicyByName
-	FindDomainByName       = findDomainByName
+	FindAccessPolicyByName    = findAccessPolicyByName
+	FindDomainByName          = findDomainByName
+	FlattenIndexFieldStatus   = flattenIndexFieldStatus
+	FlattenIndexFieldStatuses = flattenIndexFieldStatuses
 )
